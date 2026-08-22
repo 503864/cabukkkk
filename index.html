@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title> Zülal için Barışma Operasyonu ❤️</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+
+    
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ffe4ee, #ffd0e2, #fff0f6);
+            color: #4a2635;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Uçuşan kalpler */
+
+        .heart {
+            position: fixed;
+            bottom: -30px;
+            font-size: 25px;
+            animation: fly 6s linear infinite;
+            opacity: 0.7;
+            z-index: 0;
+        }
+
+        @keyframes fly {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            width: 92%;
+            max-width: 750px;
+            margin: auto;
+            padding: 40px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Üst bölüm */
+
+        .hero {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .heart-icon {
+            font-size: 75px;
+            animation: beat 1.3s infinite;
+        }
+
+        @keyframes beat {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.18);
+            }
+        }
+
+        h1 {
+            font-size: 42px;
+            color: #e83e75;
+            margin: 10px 0;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        /* Kartlar */
+
+        .card {
+            background: rgba(255,255,255,0.82);
+            border-radius: 25px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(160,50,90,0.15);
+            border: 2px solid #ffd0df;
+        }
+
+        /* Ana soru */
+
+        .main-question {
+            text-align: center;
+        }
+
+        .main-question h2 {
+            color: #df326b;
+            font-size: 29px;
+        }
+
+        .main-question p {
+            line-height: 1.7;
+        }
+
+        .yes-button {
+            border: none;
+            background: linear-gradient(135deg, #ff4f87, #e82d68);
+            color: white;
+            padding: 17px 45px;
+            border-radius: 50px;
+            font-size: 19px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(232,45,104,0.3);
+            transition: .3s;
+        }
+
+        .yes-button:hover {
+            transform: scale(1.08);
+        }
+
+        #answer {
+            min-height: 30px;
+            margin-top: 20px;
+            color: #e82d68;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* Anket */
+
+        .survey h2 {
+            text-align: center;
+            color: #df326b;
+        }
+
+        .question {
+            background: #fff7fa;
+            padding: 20px;
+            border-radius: 18px;
+            margin: 15px 0;
+        }
+
+        .question-title {
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        label {
+            display: block;
+            padding: 9px;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: .2s;
+        }
+
+        label:hover {
+            background: #ffe4ee;
+        }
+
+        input {
+            accent-color: #ed3973;
+            margin-right: 7px;
+        }
+
+        .send {
+            display: block;
+            margin: 25px auto 0;
+            border: none;
+            background: #ff5a91;
+            color: white;
+            padding: 14px 35px;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #surveyResult {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+            color: #e8326d;
+        }
+
+        /* Komik bölüm */
+
+        .funny {
+            text-align: center;
+        }
+
+        .funny h2 {
+            color: #df326b;
+        }
+
+        .joke {
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        .emoji {
+            font-size: 50px;
+            margin: 10px;
+        }
+
+        /* Sürpriz */
+
+        .surprise {
+            text-align: center;
+        }
+
+        .surprise-button {
+            border: none;
+            background: #ffb52e;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        #surpriseText {
+            margin-top: 20px;
+            font-size: 19px;
+            color: #d82f67;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #9d667b;
+        }
+
+        /* Kutlama */
+
+        #celebration {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(255, 181, 207, 0.96);
+            z-index: 999;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #celebration .box {
+            background: white;
+            padding: 40px 25px;
+            border-radius: 30px;
+            max-width: 500px;
+            box-shadow: 0 15px 50px rgba(0,0,0,.2);
+        }
+
+        #celebration h2 {
+            color: #e82d68;
+            font-size: 35px;
+        }
+
+        #celebration p {
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        /* Mobil */
+
+        @media(max-width:600px) {
+
+            .container {
+                padding-top: 25px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            .card {
+                padding: 22px 18px;
+            }
+
+            .heart-icon {
+                font-size: 60px;
+            }
+
+            .yes-button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- Uçuşan kalpler -->
+
+    <div class="heart" style="left:5%; animation-delay:0s;">❤️</div>
+    <div class="heart" style="left:20%; animation-delay:2s;">💗</div>
+    <div class="heart" style="left:40%; animation-delay:4s;">💕</div>
+    <div class="heart" style="left:60%; animation-delay:1s;">💖</div>
+    <div class="heart" style="left:80%; animation-delay:3s;">❤️</div>
+    <div class="heart" style="left:95%; animation-delay:5s;">💘</div>
+
+
+    <div class="container">
+
+        <!-- BAŞLIK -->
+
+        <div class="hero">
+
+            <div class="heart-icon">❤️</div>
+
+            <h1>Zülal ile Barışma Operasyonu</h1>
+
+            <p class="subtitle">
+                Bu site Efe Çabuk tarafından çok önemli bir konu için hazırlanmıştır... 
+                <br>
+                <b>Z</b> 
+            </p>
+
+        </div>
+
+
+        <!-- ANA SORU -->
+
+        <div class="card main-question">
+
+            <h2>Minik bir soru sorabilir miyim? 🥺</h2>
+
+           
+
+            <h2> barışalım mı :/ 💕</h2>
+
+            <button class="yes-button" onclick="baris()">
+                EVET, BARIŞALIM ❤️
+            </button>
+
+            <div id="answer"></div>
+
+        </div>
+
+
+        <!-- KOMİK BÖLÜM -->
+
+        <div class="card funny">
+
+            <div class="emoji">🥺 👉👈</div>
+
+            <h2>Önemli Bir Açıklama</h2>
+
+            <p class="joke">
+
+               
+                <br><br>
+
+                o kadar uğraştık 
+                <br>
+
+                hadi barışalım fklaslagshajks
+              
+                ❤️
+
+            </p>
+
+        </div>
+
+
+        <!-- ANKET -->
+
+        <div class="card survey">
+
+            <h2>💌 Barışma Anketi</h2>
+
+            <p style="text-align:center;">
+                Lütfen aşağıdaki son derece bilimsel anketi doldur. 😂
+            </p>
+
+
+            <div class="question">
+
+                <div class="question-title">
+                    1. Şu an benimle konuşmak ister misin? 🥺
+                </div>
+
+                <label>
+                    <input type="radio" name="q1">
+                    Evet, konuşalım ❤️
+                </label>
+
+                <label>
+                    <input type="radio" name="q1">
+                    Tabii ki, gel buraya 🫶
+                </label>
+
+                <label>
+                    <input type="radio" name="q1">
+                    kesin barışıyoruz
+                </label>
+
+            </div>
+
+
+            <div class="question">
+
+                <div class="question-title">
+                    2. Beni affetme ihtimalin yüzde kaç? 💗
+                </div>
+
+                <label>
+                    <input type="radio" name="q2">
+                    %100 ❤️
+                </label>
+
+                <label>
+                    <input type="radio" name="q2">
+                    %99,9 😌
+                </label>
+
+                <label>
+                    <input type="radio" name="q2">
+                   %100000
+
+                </label>
+
+            </div>
+            <button class="send" onclick="sendSurvey()">
+                Anketi Gönder 💌
+            </button>
+
+            <div id="surveyResult"></div>
+
+        </div>
+
+
+        <!-- SÜRPRİZ -->
+
+        <div class="card surprise">
+
+            <h2>🎁 Bir Sürpriz Var</h2>
+
+            <p>
+               kız grubunada başlık olmayı göze aldım 
+            </p>
+
+            <button class="surprise-button" onclick="surprise()">
+                Sürprizi Aç 🎁
+            </button>
+
+            <div id="surpriseText"></div>
+
+        </div>
+
+
+        <!-- SON MESAJ -->
+
+        <div class="card funny">
+
+            <div class="emoji">🫶</div>
+
+            <h2>Son Bir Şey...</h2>
+
+            <p class="joke">
+
+                <br>
+                Seni üzmek hiç istemiyorum.
+                <br><br>
+                seninle güzel vakit geçirmek istiyorum :))
+
+                <br><br>
+
+                <b>
+                 burda son bulmuştur Herkes kendine yakışanı yapsın gıoashjgkashsg
+                </b>
+
+            </p>
+
+        </div>
+
+
+        <footer>
+            Bu site tamamen gönüllü bir barışma girişimidir. ❤️
+            <br>
+            © Zülal ile Barışma Operasyonu
+            <br> Efe Çabuk
+        </footer>
+
+    </div>
+
+
+    <!-- KUTLAMA EKRANI -->
+
+    <div id="celebration">
+
+        <div class="box">
+
+            <div style="font-size:70px;">
+                🥳❤️🎉
+            </div>
+
+            <h2>BARIŞTIK! ❤️</h2>
+
+            <p>
+                Operasyon başarıyla tamamlandı. 😎
+                <br><br>
+
+                Şimdi kavga etmek yasaktır.
+                <br>
+
+                Sadece gülmek, konuşmak ve sarılmak serbesttir. 🫂
+            </p>
+
+            <button class="yes-button" onclick="closeCelebration()">
+                Tamamdır 😌❤️
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function baris() {
+
+            document.getElementById("answer").innerHTML =
+                "🥹❤️ İŞTE BU! Bu butona basacağını biliyordum. Barışma operasyonu başarılı!";
+
+            setTimeout(function() {
+
+                document.getElementById("celebration").style.display = "flex";
+
+                confetti();
+
+            }, 1200);
+        }
+
+
+        function sendSurvey() {
+
+            const q1 = document.querySelector('input[name="q1"]:checked');
+            const q2 = document.querySelector('input[name="q2"]:checked');
+            const q3 = document.querySelector('input[name="q3"]:checked');
+
+            const result = document.getElementById("surveyResult");
+
+            if (!q1 || !q2 || !q3) {
+
+                result.innerHTML =
+                    "🥺 Anketin tamamını doldurur musun? Eksik cevap kabul etmiyoruz.";
+
+                return;
+            }
+
+            result.innerHTML =
+                "💌 Cevapların başarıyla alındı! Sonuç: BİZ BARIŞIYORUZ ❤️😂";
+
+            confetti();
+        }
+
+
+        function surprise() {
+
+            const text = document.getElementById("surpriseText");
+
+            text.innerHTML =
+                "🎁 Sürpriz: basacağını biliyordum hadi barışalım daha ne yapiyim dimi :/ 🥹❤️";
+
+            confetti();
+        }
+
+
+        function closeCelebration() {
+
+            document.getElementById("celebration").style.display = "none";
+
+        }
+
+
+        function confetti() {
+
+            const emojis = [
+                "❤️",
+                "💕",
+                "💗",
+                "💖",
+                "🥳",
+                "✨",
+                "🎉"
+            ];
+
+            for (let i = 0; i < 35; i++) {
+
+                const item = document.createElement("div");
+
+                item.innerHTML =
+                    emojis[Math.floor(Math.random() * emojis.length)];
+
+                item.style.position = "fixed";
+                item.style.left = Math.random() * 100 + "vw";
+                item.style.top = "-30px";
+                item.style.fontSize =
+                    (20 + Math.random() * 25) + "px";
+
+                item.style.zIndex = "1000";
+
+                document.body.appendChild(item);
+
+                const animation = item.animate(
+                    [
+                        {
+                            transform: "translateY(0) rotate(0deg)",
+                            opacity: 1
+                        },
+                        {
+                            transform:
+                                `translateY(110vh) rotate(${Math.random() * 720}deg)`,
+                            opacity: 0
+                        }
+                    ],
+                    {
+                        duration: 2500 + Math.random() * 2000,
+                        easing: "ease-out"
+                    }
+                );
+
+                animation.onfinish = () => item.remove();
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
